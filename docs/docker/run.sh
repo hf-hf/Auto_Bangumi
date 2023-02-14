@@ -3,14 +3,21 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Asia/Shanghai \
-  -e AB_INTERVAL_TIME=7200 \
+  -e AB_INTERVAL_TIME=1800 \
+  -e AB_RENAME_FREQ=20 \
+  -e AB_METHOD=Advance \
+  -e AB_GROUP_TAG=True \
+  -e AB_DEBUG_MODE=False \
+  -e AB_EP_COMPLETE=True \
+  -e AB_RENAME=True \
+  -e AB_ENABLE_TMDB=True \
+  -e AB_LANGUAGE=zh \
+  -e AB_RESET_FOLDER=True \
   -e AB_DOWNLOADER_HOST=172.17.0.1:58085 \
   -e AB_DOWNLOADER_USERNAME=fanfan \
   -e AB_DOWNLOADER_PASSWORD=xin553527481he \
-  -e AB_METHOD=pn \
-  -e AB_GROUP_TAG=True \
   -e AB_DOWNLOAD_PATH=/downloads/bangumi/ \
-  -e AB_NOT_CONTAIN=720 \
+  -e AB_NOT_CONTAIN=720|繁体|CHT|JPTC|繁日双语|\d+-\d+|BIG5|内嵌 \
   -e AB_RSS='https://mikanani.me/RSS/MyBangumi?token=qgo%2fK5Q%2bpdybwV7WhD9KId26cn8sELx%2bySO72YBjTnU%3d' \
   -v bangumi-volume:/config \
   -v /volume1/docker/bangumi/front/:/templates \
