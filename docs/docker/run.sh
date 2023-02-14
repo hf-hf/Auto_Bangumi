@@ -1,0 +1,20 @@
+docker run -d \
+  --name=AutoBangumi \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Asia/Shanghai \
+  -e AB_INTERVAL_TIME=7200 \
+  -e AB_DOWNLOADER_HOST=172.17.0.1:58085 \
+  -e AB_DOWNLOADER_USERNAME=fanfan \
+  -e AB_DOWNLOADER_PASSWORD=xin553527481he \
+  -e AB_METHOD=pn \
+  -e AB_GROUP_TAG=True \
+  -e AB_DOWNLOAD_PATH=/downloads/bangumi/ \
+  -e AB_NOT_CONTAIN=720 \
+  -e AB_RSS='https://mikanani.me/RSS/MyBangumi?token=qgo%2fK5Q%2bpdybwV7WhD9KId26cn8sELx%2bySO72YBjTnU%3d' \
+  -v bangumi-volume:/config \
+  -v /volume1/docker/bangumi/front/:/templates \
+  --link linuxserver-qbittorrent1 \
+  --dns=8.8.8.8 \
+  --restart unless-stopped \
+  -t auto_bangumi:latest
