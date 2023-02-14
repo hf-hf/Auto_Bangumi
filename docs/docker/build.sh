@@ -1,1 +1,1 @@
-docker build -t auto_bangumi ../
+docker build -t auto_bangumi ../../
