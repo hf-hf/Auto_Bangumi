@@ -24,6 +24,7 @@ class DownloadClient:
         self.client.prefs_init(prefs=prefs)
         if settings.download_path == "":
             prefs = self.client.get_app_prefs()
+            # 默认下载目录
             settings.download_path = os.path.join(prefs["save_path"], "Bangumi")
 
     def set_rule(self, info: dict, rss_link):
@@ -98,6 +99,12 @@ class DownloadClient:
             torrent_hash=hash, old_path=path_name, new_path=new_name
         )
         logger.info(f"{path_name} >> {new_name}")
+
+    def rename_torrent_file(self, hash, new_file_name, old_path, new_path):
+        self.client.torrents_rename_file(
+            torrent_hash=hash, new_file_name=new_file_name, old_path=old_path, new_path=new_path
+        )
+        logger.info(f"{old_path} >> {new_path}, new name {new_file_name}")
 
     def delete_torrent(self, hashes):
         self.client.torrents_delete(
